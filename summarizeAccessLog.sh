@@ -10,9 +10,9 @@ if [ $# -eq 1 ]
 		} 
 		END {
     		for (request in requests) {
-       			print request" -> reqCount="count[request]," avgTime="requests[request] / count[request], " maxReqTime="max[request]
-   		}
-	}' $1
+       			print count[request]" "request" -> reqCount="count[request]," avgTime="requests[request] / count[request], " maxReqTime="max[request] 
+   		   }
+	}' $1 | sort -rn| cut -d " " -f 2-
 else
     echo "ERROR: Invalid argument. Usuage: ./summarizeAccessLog.sh fileName"
 fi
